@@ -1,10 +1,12 @@
 package com.witek.product
 
 import com.witek.discount.api.DiscountCalculator
+import com.witek.product.model.Product
+import com.witek.product.model.ProductCalculatePriceResponse
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
 import java.math.BigDecimal
-import java.util.UUID
+import java.util.*
 
 @Service
 class ProductService(
@@ -19,15 +21,16 @@ class ProductService(
         return product.toResponse()
     }
 
-    fun calculatePrice(productId: UUID, quantity: Long): BigDecimal {
+    fun calculatePrice(productId: UUID, quantity: Long): ProductCalculatePriceResponse {
         val product: Product = productRepository.findByIdOrNull(productId)
             ?: throw NoSuchElementException("Product with id: $productId not found")
 
-        return discountCalculator.calculate(product.price, quantity)
+        val totalPrice: BigDecimal = discountCalculator.calculate(product.price, quantity)
+        return ProductCalculatePriceResponse(totalPrice)
     }
 
     private fun Product.toResponse(): ProductResponse = ProductResponse(
-        id = id.toString(),
+        id = id,
         name = name,
         price = price,
     )

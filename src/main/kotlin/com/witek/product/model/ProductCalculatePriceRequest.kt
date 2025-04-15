@@ -1,4 +1,4 @@
-package com.witek.product
+package com.witek.product.model
 
 import jakarta.validation.constraints.Positive
 

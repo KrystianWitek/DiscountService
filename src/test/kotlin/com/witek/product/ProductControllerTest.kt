@@ -2,6 +2,8 @@ package com.witek.product
 
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.witek.discount.infrastructure.db.DiscountPolicyRepository
+import com.witek.product.model.ProductCalculatePriceRequest
+import com.witek.product.model.ProductCalculatePriceResponse
 import org.junit.jupiter.api.Test
 import org.mockito.Mockito
 import org.mockito.Mockito.verify
@@ -11,6 +13,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest
 import org.springframework.http.MediaType
 import org.springframework.test.context.ActiveProfiles
 import org.springframework.test.context.bean.override.mockito.MockitoBean
+import org.springframework.test.json.JsonCompareMode
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.get
 import org.springframework.test.web.servlet.post
@@ -50,12 +53,19 @@ internal class ProductControllerTest {
     @Test
     fun `should calculate product total price`() {
         val request = ProductCalculatePriceRequest(quantity = QUANTITY)
+        val response = ProductCalculatePriceResponse(totalPrice = BigDecimal("132"))
+        Mockito.`when`(productService.calculatePrice(PRODUCT_ID, QUANTITY))
+            .thenReturn(response)
 
         mockMvc.post("/v1/products/$PRODUCT_ID/calculate-price") {
             contentType = MediaType.APPLICATION_JSON
             content = jacksonObjectMapper().writeValueAsString(request)
         }.andExpect {
             status { isOk() }
+            content {
+                contentType(MediaType.APPLICATION_JSON)
+                json(jacksonObjectMapper().writeValueAsString(response), JsonCompareMode.STRICT)
+            }
         }
 
         verify(productService).calculatePrice(PRODUCT_ID, QUANTITY)
