@@ -13,7 +13,7 @@ spring:
     password: ${MYSQL_SECRET}
     driver-class-name: com.mysql.cj.jdbc.Driver
   config:
-    import: optional:file:.env-variables.local[.properties]
+    import: optional:file:.env.local[.properties]
 
 discount:
   admin-token: ${ADMIN_TOKEN}

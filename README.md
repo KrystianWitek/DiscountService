@@ -39,7 +39,7 @@ To run app locally on IDE or docker image, please provide file with these variab
 
 ### 🛠 Build Docker image
 ```docker
-docker build -t docker-service .
+docker build -t discount-service .
 ```
 
 ### ▶️ Run the Docker container

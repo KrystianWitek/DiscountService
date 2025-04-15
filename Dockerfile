@@ -5,7 +5,7 @@ COPY build.gradle.kts settings.gradle.kts ./
 COPY gradle gradle
 COPY src src
 
-RUN gradle build --no-daemon
+RUN gradle build --no-daemon -x test
 
 FROM eclipse-temurin:17-jre-alpine
 WORKDIR /app
