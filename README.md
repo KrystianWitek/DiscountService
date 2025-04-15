@@ -43,9 +43,13 @@ docker build -t discount-service .
 ```
 
 ### ▶️ Run the Docker container
+In the `.env` file, provide the actual values required to run the application.
 ```
 docker run --env-file .env -p 8080:8080 discount-service
 ```
+
+### ▶️ Run in IDE
+Create a `.env.local` file containing the actual environment values and move it to the main project directory.
 
 ## 🧪 Running tests
 To run all tests use:
