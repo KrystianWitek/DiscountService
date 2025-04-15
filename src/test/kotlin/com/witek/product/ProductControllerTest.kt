@@ -2,7 +2,6 @@ package com.witek.product
 
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.witek.discount.infrastructure.db.DiscountPolicyRepository
-import com.witek.discount.web.DiscountMaintenanceController
 import org.junit.jupiter.api.Test
 import org.mockito.Mockito
 import org.mockito.Mockito.verify
@@ -16,7 +15,7 @@ import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.get
 import org.springframework.test.web.servlet.post
 import java.math.BigDecimal
-import java.util.UUID
+import java.util.*
 
 @WebMvcTest(controllers = [ProductController::class])
 @ActiveProfiles("test")
