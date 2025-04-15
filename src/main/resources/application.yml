@@ -8,7 +8,7 @@ spring:
       spec: maximumSize=100,expireAfterWrite=1h
     cache-names: discountPolicies
   datasource:
-    url: jdbc:mysql://localhost:3306/testdb
+    url: ${MYSQL_URL}
     username: ${MYSQL_USER}
     password: ${MYSQL_SECRET}
     driver-class-name: com.mysql.cj.jdbc.Driver

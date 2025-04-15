@@ -22,6 +22,13 @@
 
 ---
 
+## ⚙️  Environment variables
+To run app locally on IDE or docker image, please provide file with these variables:
+- **ADMIN_TOKEN**=`your unique token for maintenance endpoint`
+- **MYSQL_USER**=`MySQL database username`
+- **MYSQL_SECRET**=`MySQL database password`
+- **MYSQL_URL**=`MySQL database url connection string`
+
 ## ⚙️ Build & Run
 
 ### 🛠 Build the project
