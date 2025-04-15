@@ -1,0 +1,9 @@
+discount:
+  admin-token: token123
+
+spring:
+  sql:
+    init:
+      mode: never
+  main:
+    allow-bean-definition-overriding: true
