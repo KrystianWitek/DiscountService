@@ -45,9 +45,15 @@ To run all tests use:
 ```bash
 ./gradlew test
 ```
+FOR WINDOWS USERS:
+```
+If Docker Desktop is not configured to start automatically with the system, 
+please ensure it is manually started before running the tests, 
+as some of them depend on Docker and may fail otherwise.
+```
 
 ## 📚 API Documentation
-
+When application is running 
 [CLICK HERE TO SEE API DOCUMENTATION](http://localhost:8080/swagger-ui.html)
 
 ## 🧑‍💻 Author
