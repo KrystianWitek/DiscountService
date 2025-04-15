@@ -7,7 +7,7 @@ plugins {
 
 val mysqlConnectorVersion = "8.0.33"
 val caffeineVersion = "3.1.8"
-val springDocVersion = "2.2.0"
+val springDocVersion = "2.8.6"
 val assertjVersion = "3.25.3"
 
 group = "com.witek"
